@@ -83,7 +83,6 @@ public  class ICustomClientRepositoryImpl implements ICustomClientRepository {
                     projection.setDni(row.get("dni", String.class));
                     projection.setEmail(row.get("email", String.class));
 
-                    // Procesar las cuentas como JSON
                     List<ClientAccountDto> cuentas = JsonUtil.fromJsonToClientAccountList(row.get("cuentas", String.class));
                     projection.setCuentas(cuentas);
 
@@ -92,6 +91,4 @@ public  class ICustomClientRepositoryImpl implements ICustomClientRepository {
                 .first().switchIfEmpty(Mono.error(new RuntimeException("Cliente no encontrado con ID: " + clientId)));
 
     }
-
-
 }

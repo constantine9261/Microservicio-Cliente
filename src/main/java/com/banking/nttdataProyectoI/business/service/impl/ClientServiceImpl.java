@@ -35,7 +35,7 @@ public class ClientServiceImpl  implements IClientService {
 
                     List<ClientListDto> clientListDtos = groupedByClientId.values().stream()
                             .map(clientGroup -> {
-                                ClientProjection clientData = clientGroup.get(0); // Información del cliente
+                                ClientProjection clientData = clientGroup.get(0);
                                 List<ClientAccountDto> cuentas = clientGroup.stream()
                                         .filter(client -> client.getCuentaId() != null)
                                         .map(client -> new ClientAccountDto(
@@ -61,7 +61,7 @@ public class ClientServiceImpl  implements IClientService {
                         response.setErrorMessage("No se encontraron clientes relacionados con los filtros.");
                     } else {
                         response.setProducts(clientListDtos);
-                        response.setTotalRecords((long) clientListDtos.size()); // Aquí puedes poner el total real si lo obtienes de otro lado
+                        response.setTotalRecords((long) clientListDtos.size());
                     }
 
                     return response;
